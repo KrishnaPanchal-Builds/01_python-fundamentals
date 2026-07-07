@@ -68,9 +68,11 @@ Comparison operators are widely used in:
 
 # 🚀 Mini Project
 
-## 👨‍🎓 Student Eligibility Checker
+## 👨‍🎓 SmartPhone Comparision Dashboard
 
-In this project, you'll compare marks, age, and attendance values to determine whether a student meets specific eligibility criteria.
+This project demonstrates the practical use of Python
+comparison operators by comparing two smartphones based
+on their specifications.
 
 This project demonstrates how comparison operators are used to evaluate conditions and prepare data for decision-making.
 
