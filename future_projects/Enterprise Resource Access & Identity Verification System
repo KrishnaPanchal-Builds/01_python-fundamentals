@@ -1,0 +1,815 @@
+"""
+===============================================================================
+File    : 09_identity_and_membership.py
+Project : Enterprise Resource Access & Identity Verification System
+
+Part 1 : Object Identity & Memory Management
+
+Concepts Covered
+----------------
+✓ Identity Operators (is, is not)
+✓ Equality Operator (==)
+✓ id() Function
+✓ Object Aliasing
+✓ Mutable vs Immutable Objects
+✓ Memory References
+===============================================================================
+"""
+
+print("=" * 80)
+print("ENTERPRISE RESOURCE ACCESS & IDENTITY VERIFICATION SYSTEM")
+print("=" * 80)
+
+# --------------------------------------------------------------------
+# EMPLOYEE REGISTRATION
+# --------------------------------------------------------------------
+
+employee_id = input("Employee ID            : ").upper()
+employee_name = input("Employee Name          : ").title()
+department = input("Department             : ").upper()
+
+print("\n")
+
+# --------------------------------------------------------------------
+# DIGITAL IDENTITY
+# --------------------------------------------------------------------
+
+print("=" * 80)
+print("DIGITAL IDENTITY ANALYSIS")
+print("=" * 80)
+
+employee_record = {
+    "id": employee_id,
+    "name": employee_name,
+    "department": department
+}
+
+employee_reference = employee_record
+
+employee_duplicate = {
+    "id": employee_id,
+    "name": employee_name,
+    "department": department
+}
+
+print("\nMemory Addresses")
+print("-" * 80)
+
+print("employee_record    :", id(employee_record))
+print("employee_reference :", id(employee_reference))
+print("employee_duplicate :", id(employee_duplicate))
+
+print("\nIdentity Check")
+print("-" * 80)
+
+print("employee_record is employee_reference")
+print(employee_record is employee_reference)
+
+print()
+
+print("employee_record == employee_reference")
+print(employee_record == employee_reference)
+
+print()
+
+print("employee_record is employee_duplicate")
+print(employee_record is employee_duplicate)
+
+print()
+
+print("employee_record == employee_duplicate")
+print(employee_record == employee_duplicate)
+
+# --------------------------------------------------------------------
+# MUTABLE OBJECT DEMONSTRATION
+# --------------------------------------------------------------------
+
+print("\n")
+print("=" * 80)
+print("MUTABLE OBJECT DEMONSTRATION")
+print("=" * 80)
+
+employee_reference["status"] = "Active"
+
+print("\nOriginal Dictionary")
+print(employee_record)
+
+print("\nReference Dictionary")
+print(employee_reference)
+
+print("\nDuplicate Dictionary")
+print(employee_duplicate)
+
+print("\n")
+
+print("Reason")
+
+print(
+    "employee_record and employee_reference "
+    "refer to the SAME object in memory."
+)
+
+print(
+    "employee_duplicate is a DIFFERENT object "
+    "even though its contents are equal."
+)
+
+# --------------------------------------------------------------------
+# IMMUTABLE OBJECT DEMONSTRATION
+# --------------------------------------------------------------------
+
+print("\n")
+print("=" * 80)
+print("IMMUTABLE OBJECT DEMONSTRATION")
+print("=" * 80)
+
+salary_a = 50000
+salary_b = 50000
+
+print("salary_a :", salary_a)
+print("salary_b :", salary_b)
+
+print()
+
+print("salary_a == salary_b")
+print(salary_a == salary_b)
+
+print()
+
+print("salary_a is salary_b")
+print(salary_a is salary_b)
+
+print()
+
+print("Memory Address A :", id(salary_a))
+print("Memory Address B :", id(salary_b))
+
+# --------------------------------------------------------------------
+# OBJECT ALIASING
+# --------------------------------------------------------------------
+
+print("\n")
+print("=" * 80)
+print("OBJECT ALIASING")
+print("=" * 80)
+
+project_team = [
+    "Python",
+    "SQL",
+    "Git"
+]
+
+team_alias = project_team
+
+team_alias.append("Docker")
+
+print("\nOriginal Team")
+print(project_team)
+
+print("\nAlias Team")
+print(team_alias)
+
+print()
+
+print("Identity Check")
+print(project_team is team_alias)
+
+print()
+
+print("Equality Check")
+print(project_team == team_alias)
+
+# --------------------------------------------------------------------
+# SUMMARY
+# --------------------------------------------------------------------
+
+print("\n")
+print("=" * 80)
+print("PART 1 SUMMARY")
+print("=" * 80)
+
+print(f"Employee ID      : {employee_id}")
+print(f"Employee Name    : {employee_name}")
+print(f"Department       : {department}")
+
+print("\nKey Learning")
+
+print("1. 'is' compares memory location.")
+print("2. '==' compares values.")
+print("3. id() returns memory address.")
+print("4. Mutable objects share changes through aliases.")
+print("5. Immutable objects behave differently.")
+
+# ===============================================================================
+# PART 2 : ENTERPRISE RESOURCE & MEMBERSHIP VERIFICATION
+# ===============================================================================
+
+print("\n" + "=" * 80)
+print("ENTERPRISE RESOURCE MEMBERSHIP VERIFICATION")
+print("=" * 80)
+
+# ------------------------------------------------------------------------------
+# COMPANY DATABASE
+# ------------------------------------------------------------------------------
+
+authorized_departments = (
+    "AI",
+    "ML",
+    "DATA",
+    "WEB",
+    "CLOUD",
+    "CYBER"
+)
+
+available_software = [
+    "Python",
+    "VS Code",
+    "Git",
+    "Docker",
+    "Jupyter",
+    "Power BI",
+    "Tableau",
+    "MySQL"
+]
+
+secured_servers = {
+    "AI_SERVER",
+    "ML_SERVER",
+    "DATA_SERVER",
+    "CLOUD_SERVER"
+}
+
+employee_permissions = {
+    "Repository Access": True,
+    "VPN Access": True,
+    "Admin Panel": False,
+    "Production Server": False,
+    "Cloud Console": True
+}
+
+# ------------------------------------------------------------------------------
+# USER INPUT
+# ------------------------------------------------------------------------------
+
+print("\nResource Verification")
+print("-" * 80)
+
+requested_department = input(
+    "Requested Department : "
+).upper()
+
+requested_software = input(
+    "Software Required : "
+).title()
+
+requested_server = input(
+    "Server Required : "
+).upper()
+
+required_permission = input(
+    "Permission Required : "
+).title()
+
+search_skill = input(
+    "Search Skill : "
+).lower()
+
+# ------------------------------------------------------------------------------
+# MEMBERSHIP OPERATIONS
+# ------------------------------------------------------------------------------
+
+department_exists = (
+    requested_department in authorized_departments
+)
+
+software_available = (
+    requested_software in available_software
+)
+
+server_available = (
+    requested_server in secured_servers
+)
+
+permission_exists = (
+    required_permission in employee_permissions
+)
+
+permission_status = (
+    employee_permissions.get(
+        required_permission,
+        False
+    )
+)
+
+python_skill = (
+    "python" in skills
+)
+
+sql_skill = (
+    "sql" in skills
+)
+
+searched_skill = (
+    search_skill in skills
+)
+
+# ------------------------------------------------------------------------------
+# STRING MEMBERSHIP
+# ------------------------------------------------------------------------------
+
+official_email = (
+    employee_name.lower().replace(" ", ".")
+    + "@company.com"
+)
+
+company_domain = (
+    "@company.com" in official_email
+)
+
+contains_employee_name = (
+    employee_name.split()[0].lower()
+    in official_email
+)
+
+# ------------------------------------------------------------------------------
+# NEGATIVE MEMBERSHIP
+# ------------------------------------------------------------------------------
+
+blocked_softwares = [
+    "Torrent",
+    "Cheat Engine",
+    "Keylogger"
+]
+
+safe_software = (
+    requested_software not in blocked_softwares
+)
+
+# ------------------------------------------------------------------------------
+# REPORT
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("MEMBERSHIP ANALYSIS REPORT")
+print("=" * 80)
+
+print(f"Department Exists           : {department_exists}")
+print(f"Software Available          : {software_available}")
+print(f"Server Exists               : {server_available}")
+
+print("-" * 80)
+
+print(f"Permission Exists           : {permission_exists}")
+print(f"Permission Granted          : {permission_status}")
+
+print("-" * 80)
+
+print(f"Python Skill Found          : {python_skill}")
+print(f"SQL Skill Found             : {sql_skill}")
+print(f"{search_skill.title()} Skill Found      : {searched_skill}")
+
+print("-" * 80)
+
+print(f"Official Email              : {official_email}")
+print(f"Company Domain Verified     : {company_domain}")
+print(f"Employee Name Present       : {contains_employee_name}")
+
+print("-" * 80)
+
+print(f"Software Safe To Install    : {safe_software}")
+
+# ------------------------------------------------------------------------------
+# MEMBERSHIP SCORE
+# ------------------------------------------------------------------------------
+
+membership_score = sum([
+    department_exists,
+    software_available,
+    server_available,
+    permission_exists,
+    permission_status,
+    python_skill,
+    sql_skill,
+    searched_skill,
+    company_domain,
+    safe_software
+])
+
+print("\n" + "=" * 80)
+print("MEMBERSHIP SCORECARD")
+print("=" * 80)
+
+print(f"Membership Score : {membership_score}/10")
+
+if membership_score >= 9:
+    status = "EXCELLENT"
+elif membership_score >= 7:
+    status = "GOOD"
+elif membership_score >= 5:
+    status = "AVERAGE"
+else:
+    status = "LOW"
+
+print(f"Overall Status : {status}")
+
+# ===============================================================================
+# PART 3 : ROLE-BASED ACCESS CONTROL (RBAC)
+# ===============================================================================
+
+print("\n" + "=" * 80)
+print("ROLE-BASED ACCESS CONTROL (RBAC)")
+print("=" * 80)
+
+# ------------------------------------------------------------------------------
+# COMPANY ROLES
+# ------------------------------------------------------------------------------
+
+roles = {
+    "Intern": [
+        "Python",
+        "VS Code",
+        "Git"
+    ],
+
+    "Data Analyst": [
+        "Python",
+        "SQL",
+        "Power BI",
+        "Tableau",
+        "Jupyter"
+    ],
+
+    "ML Engineer": [
+        "Python",
+        "SQL",
+        "Git",
+        "Docker",
+        "Jupyter"
+    ],
+
+    "AI Engineer": [
+        "Python",
+        "SQL",
+        "Git",
+        "Docker",
+        "Linux",
+        "TensorFlow",
+        "PyTorch"
+    ]
+}
+
+repositories = {
+    "Intern": {
+        "Training",
+        "Documentation"
+    },
+
+    "Data Analyst": {
+        "Analytics",
+        "SQL",
+        "Dashboards"
+    },
+
+    "ML Engineer": {
+        "Machine Learning",
+        "MLOps",
+        "Deployment"
+    },
+
+    "AI Engineer": {
+        "Artificial Intelligence",
+        "Deep Learning",
+        "Research"
+    }
+}
+
+# ------------------------------------------------------------------------------
+# USER INPUT
+# ------------------------------------------------------------------------------
+
+employee_role = input(
+    "\nEmployee Role : "
+).title()
+
+requested_tool = input(
+    "Required Software : "
+).title()
+
+requested_repository = input(
+    "Repository Required : "
+).title()
+
+# ------------------------------------------------------------------------------
+# SOFTWARE ACCESS
+# ------------------------------------------------------------------------------
+
+role_exists = employee_role in roles
+
+if role_exists:
+
+    software_access = (
+        requested_tool
+        in roles[employee_role]
+    )
+
+else:
+    software_access = False
+
+# ------------------------------------------------------------------------------
+# REPOSITORY ACCESS
+# ------------------------------------------------------------------------------
+
+if employee_role in repositories:
+
+    repository_access = (
+        requested_repository
+        in repositories[employee_role]
+    )
+
+else:
+    repository_access = False
+
+# ------------------------------------------------------------------------------
+# AI PROJECT ELIGIBILITY
+# ------------------------------------------------------------------------------
+
+eligible_for_ai_project = all([
+    employee_role == "AI Engineer",
+    "python" in skills,
+    "sql" in skills,
+    "git" in skills,
+    security_verified
+])
+
+# ------------------------------------------------------------------------------
+# ML PROJECT ELIGIBILITY
+# ------------------------------------------------------------------------------
+
+eligible_for_ml_project = all([
+    employee_role == "Ml Engineer",
+    "python" in skills,
+    security_verified
+])
+
+# ------------------------------------------------------------------------------
+# DATA ANALYTICS PROJECT
+# ------------------------------------------------------------------------------
+
+eligible_for_dashboard = any([
+    employee_role == "Data Analyst",
+    "power bi" in skills,
+    "tableau" in skills
+])
+
+# ------------------------------------------------------------------------------
+# DIGITAL LICENSE VERIFICATION
+# ------------------------------------------------------------------------------
+
+licensed_softwares = {
+    "Python",
+    "SQL",
+    "Git",
+    "Docker",
+    "Power BI",
+    "Tableau",
+    "Jupyter"
+}
+
+license_verified = (
+    requested_tool
+    in licensed_softwares
+)
+
+# ------------------------------------------------------------------------------
+# RESOURCE VALIDATION
+# ------------------------------------------------------------------------------
+
+resource_allowed = all([
+    software_access,
+    repository_access,
+    license_verified,
+    security_verified
+])
+
+# ------------------------------------------------------------------------------
+# ACCESS REPORT
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("ACCESS CONTROL REPORT")
+print("=" * 80)
+
+print(f"Role Exists                 : {role_exists}")
+
+print(f"Software Access             : {software_access}")
+
+print(f"Repository Access           : {repository_access}")
+
+print(f"Licensed Software           : {license_verified}")
+
+print("-" * 80)
+
+print(f"AI Project Eligible         : {eligible_for_ai_project}")
+
+print(f"ML Project Eligible         : {eligible_for_ml_project}")
+
+print(f"Dashboard Project Eligible  : {eligible_for_dashboard}")
+
+print("-" * 80)
+
+print(f"Overall Resource Access     : {resource_allowed}")
+
+# ------------------------------------------------------------------------------
+# ACCESS SCORE
+# ------------------------------------------------------------------------------
+
+rbac_score = sum([
+    role_exists,
+    software_access,
+    repository_access,
+    license_verified,
+    eligible_for_ai_project,
+    eligible_for_ml_project,
+    eligible_for_dashboard,
+    resource_allowed
+])
+
+print("\n" + "=" * 80)
+print("RBAC SCORE")
+print("=" * 80)
+
+print(f"Role-Based Access Score : {rbac_score}/8")
+
+if rbac_score >= 7:
+    security_level = "LEVEL A"
+elif rbac_score >= 5:
+    security_level = "LEVEL B"
+elif rbac_score >= 3:
+    security_level = "LEVEL C"
+else:
+    security_level = "RESTRICTED"
+
+print(f"Assigned Security Level : {security_level}")
+
+# ===============================================================================
+# PART 4 : ENTERPRISE SECURITY AUDIT & CONCEPT SUMMARY
+# ===============================================================================
+
+print("\n" + "=" * 80)
+print("ENTERPRISE SECURITY AUDIT")
+print("=" * 80)
+
+# ------------------------------------------------------------------------------
+# OBJECT IDENTITY ANALYSIS
+# ------------------------------------------------------------------------------
+
+print("\nOBJECT IDENTITY ANALYSIS")
+print("-" * 80)
+
+employee_snapshot = employee_record
+employee_backup = employee_record.copy()
+
+print(f"Employee Record ID      : {id(employee_record)}")
+print(f"Employee Snapshot ID    : {id(employee_snapshot)}")
+print(f"Employee Backup ID      : {id(employee_backup)}")
+
+print("\nIdentity Verification")
+
+print(f"employee_record is employee_snapshot : "
+      f"{employee_record is employee_snapshot}")
+
+print(f"employee_record == employee_snapshot : "
+      f"{employee_record == employee_snapshot}")
+
+print(f"employee_record is employee_backup   : "
+      f"{employee_record is employee_backup}")
+
+print(f"employee_record == employee_backup   : "
+      f"{employee_record == employee_backup}")
+
+# ------------------------------------------------------------------------------
+# MEMBERSHIP AUDIT
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("MEMBERSHIP AUDIT")
+print("=" * 80)
+
+important_skills = {
+    "python",
+    "sql",
+    "git",
+    "docker"
+}
+
+matched_skills = important_skills.intersection(set(skills))
+missing_skills = important_skills.difference(set(skills))
+
+print(f"Important Skills        : {sorted(important_skills)}")
+print(f"Employee Skills         : {sorted(skills)}")
+print(f"Matched Skills          : {sorted(matched_skills)}")
+print(f"Missing Skills          : {sorted(missing_skills)}")
+
+# ------------------------------------------------------------------------------
+# FINAL ACCESS DECISION
+# ------------------------------------------------------------------------------
+
+overall_access = all([
+    security_verified,
+    resource_allowed,
+    role_exists,
+    membership_score >= 7
+])
+
+# ------------------------------------------------------------------------------
+# AUDIT SCORE
+# ------------------------------------------------------------------------------
+
+audit_score = sum([
+    overall_access,
+    role_exists,
+    software_access,
+    repository_access,
+    security_verified,
+    membership_score >= 7,
+    rbac_score >= 6,
+    employee_record is employee_snapshot,
+    employee_record == employee_backup,
+    len(matched_skills) >= 3
+])
+
+# ------------------------------------------------------------------------------
+# FINAL REPORT
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("EXECUTIVE AUDIT REPORT")
+print("=" * 80)
+
+print(f"Employee ID             : {employee_id}")
+print(f"Employee Name           : {employee_name}")
+print(f"Department              : {department}")
+print(f"Role                    : {employee_role}")
+
+print("-" * 80)
+
+print(f"Membership Score        : {membership_score}/10")
+print(f"RBAC Score              : {rbac_score}/8")
+print(f"Audit Score             : {audit_score}/10")
+
+overall_percentage = (
+    (
+        membership_score +
+        rbac_score +
+        audit_score
+    ) / 28
+) * 100
+
+print(f"Overall Percentage      : {overall_percentage:.2f}%")
+
+print("-" * 80)
+
+if overall_percentage >= 90:
+    grade = "A+"
+elif overall_percentage >= 80:
+    grade = "A"
+elif overall_percentage >= 70:
+    grade = "B"
+elif overall_percentage >= 60:
+    grade = "C"
+else:
+    grade = "D"
+
+print(f"Enterprise Grade        : {grade}")
+
+print("-" * 80)
+
+print(f"Access Approved         : {overall_access}")
+
+if overall_access:
+    print("Final Decision          : ACCESS GRANTED")
+else:
+    print("Final Decision          : ACCESS DENIED")
+
+# ------------------------------------------------------------------------------
+# INTERVIEW RECAP
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("IDENTITY & MEMBERSHIP RECAP")
+print("=" * 80)
+
+print("1. == compares values.")  
+print("2. is compares object identity (memory reference).")
+print("3. id() returns an object's unique identity.")
+print("4. in checks whether an element exists in a collection.")
+print("5. not in checks whether an element does not exist.")
+print("6. Dictionaries use membership checks on keys by default.")
+print("7. Sets provide fast membership testing.")
+print("8. Aliasing means two variables reference the same object.")
+print("9. copy() creates a new object with the same contents.")
+print("10. Use == for value comparison and is mainly for identity checks (such as comparing with None).")
+
+print("\n" + "=" * 80)
+print("PROGRAM COMPLETED SUCCESSFULLY")
+print("=" * 80)
