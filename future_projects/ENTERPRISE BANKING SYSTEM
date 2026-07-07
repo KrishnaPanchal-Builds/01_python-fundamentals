@@ -1,0 +1,700 @@
+"""
+===============================================================================
+File    : 10_variable_scope.py
+Project : Enterprise Banking System
+
+Part 1 : Global Variables & Local Variables
+
+Concepts Covered
+----------------
+✓ Global Variables
+✓ Local Variables
+✓ Variable Shadowing
+✓ global Keyword
+✓ Function Scope
+===============================================================================
+"""
+
+print("=" * 80)
+print("ENTERPRISE BANKING SYSTEM")
+print("=" * 80)
+
+# ------------------------------------------------------------------------------
+# GLOBAL VARIABLES
+# ------------------------------------------------------------------------------
+
+BANK_NAME = "OpenAI National Bank"
+BANK_CODE = "ONB001"
+BANK_INTEREST_RATE = 6.75
+BANK_CURRENCY = "INR"
+
+total_accounts = 0
+total_bank_balance = 0.0
+
+print(f"Bank Name          : {BANK_NAME}")
+print(f"Bank Code          : {BANK_CODE}")
+print(f"Interest Rate      : {BANK_INTEREST_RATE}%")
+print(f"Currency           : {BANK_CURRENCY}")
+
+print("\n" + "=" * 80)
+
+# ------------------------------------------------------------------------------
+# ACCOUNT CREATION
+# ------------------------------------------------------------------------------
+
+account_number = input("Account Number : ").upper()
+customer_name = input("Customer Name  : ").title()
+
+opening_balance = float(
+    input("Opening Balance : ")
+)
+
+# ------------------------------------------------------------------------------
+# FUNCTION 1
+# ------------------------------------------------------------------------------
+
+def create_account():
+
+    global total_accounts
+    global total_bank_balance
+
+    account_status = "ACTIVE"
+
+    total_accounts += 1
+    total_bank_balance += opening_balance
+
+    print("\nCreating Account...")
+
+    print(f"Customer        : {customer_name}")
+    print(f"Account Number  : {account_number}")
+    print(f"Status          : {account_status}")
+
+create_account()
+
+# ------------------------------------------------------------------------------
+# FUNCTION 2
+# ------------------------------------------------------------------------------
+
+def display_customer():
+
+    customer_type = "Savings"
+
+    print("\nCustomer Details")
+    print("-" * 80)
+
+    print(f"Name            : {customer_name}")
+    print(f"Account Number  : {account_number}")
+    print(f"Account Type    : {customer_type}")
+    print(f"Balance         : ₹{opening_balance:,.2f}")
+
+display_customer()
+
+# ------------------------------------------------------------------------------
+# VARIABLE SHADOWING
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("VARIABLE SHADOWING")
+print("=" * 80)
+
+interest_rate = 5.0
+
+def compare_interest():
+
+    interest_rate = 7.25
+
+    print(f"Local Interest Rate  : {interest_rate}%")
+
+compare_interest()
+
+print(f"Global Bank Interest : {BANK_INTEREST_RATE}%")
+print(f"Independent Variable : {interest_rate}%")
+
+# ------------------------------------------------------------------------------
+# GLOBAL KEYWORD
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("GLOBAL KEYWORD")
+print("=" * 80)
+
+transaction_count = 0
+
+def deposit():
+
+    global transaction_count
+
+    amount = float(input("\nDeposit Amount : "))
+
+    transaction_count += 1
+
+    new_balance = opening_balance + amount
+
+    print(f"Updated Balance : ₹{new_balance:,.2f}")
+
+deposit()
+
+print(f"\nTransactions Completed : {transaction_count}")
+
+# ------------------------------------------------------------------------------
+# SUMMARY
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("PART 1 SUMMARY")
+print("=" * 80)
+
+print(f"Bank Name             : {BANK_NAME}")
+print(f"Customer              : {customer_name}")
+print(f"Total Accounts        : {total_accounts}")
+print(f"Total Bank Balance    : ₹{total_bank_balance:,.2f}")
+print(f"Transaction Count     : {transaction_count}")
+
+print("\nKey Learnings")
+print("-" * 80)
+print("1. Global variables are accessible throughout the program.")
+print("2. Local variables exist only inside functions.")
+print("3. The global keyword allows modifying global variables.")
+print("4. Local variables can shadow variables with the same name.")
+print("5. Global constants are typically written in UPPER_CASE.")
+
+print("\nPart 1 Completed Successfully.")
+
+# ===============================================================================
+# PART 2 : BANKING OPERATIONS & FUNCTION SCOPE
+# ===============================================================================
+
+print("\n" + "=" * 80)
+print("BANKING OPERATIONS")
+print("=" * 80)
+
+current_balance = opening_balance
+
+# ------------------------------------------------------------------------------
+# DEPOSIT FUNCTION
+# ------------------------------------------------------------------------------
+
+def deposit_money(balance):
+
+    deposit_amount = float(
+        input("\nEnter Deposit Amount : ₹")
+    )
+
+    transaction_type = "Deposit"
+
+    balance += deposit_amount
+
+    print("\nTransaction Successful")
+    print(f"Transaction Type : {transaction_type}")
+    print(f"Deposited Amount : ₹{deposit_amount:,.2f}")
+    print(f"Available Balance: ₹{balance:,.2f}")
+
+    return balance
+
+# ------------------------------------------------------------------------------
+# WITHDRAW FUNCTION
+# ------------------------------------------------------------------------------
+
+def withdraw_money(balance):
+
+    withdrawal_amount = float(
+        input("\nEnter Withdrawal Amount : ₹")
+    )
+
+    transaction_type = "Withdrawal"
+
+    if withdrawal_amount <= balance:
+
+        balance -= withdrawal_amount
+
+        print("\nTransaction Successful")
+        print(f"Transaction Type : {transaction_type}")
+        print(f"Withdrawn Amount : ₹{withdrawal_amount:,.2f}")
+        print(f"Available Balance: ₹{balance:,.2f}")
+
+    else:
+
+        print("\nTransaction Failed")
+        print("Reason : Insufficient Balance")
+
+    return balance
+
+# ------------------------------------------------------------------------------
+# TRANSFER FUNCTION
+# ------------------------------------------------------------------------------
+
+def transfer_money(balance):
+
+    receiver_account = input(
+        "\nReceiver Account Number : "
+    ).upper()
+
+    transfer_amount = float(
+        input("Transfer Amount : ₹")
+    )
+
+    transfer_status = "Pending"
+
+    if transfer_amount <= balance:
+
+        balance -= transfer_amount
+
+        transfer_status = "Successful"
+
+    print("\nTransfer Details")
+    print(f"Receiver Account : {receiver_account}")
+    print(f"Transfer Status  : {transfer_status}")
+    print(f"Current Balance  : ₹{balance:,.2f}")
+
+    return balance
+
+# ------------------------------------------------------------------------------
+# MINI STATEMENT
+# ------------------------------------------------------------------------------
+
+def mini_statement(balance):
+
+    branch_name = "Mumbai Main Branch"
+
+    account_category = "Savings"
+
+    print("\n" + "=" * 80)
+    print("MINI STATEMENT")
+    print("=" * 80)
+
+    print(f"Bank              : {BANK_NAME}")
+    print(f"Customer          : {customer_name}")
+    print(f"Branch            : {branch_name}")
+    print(f"Category          : {account_category}")
+    print(f"Available Balance : ₹{balance:,.2f}")
+
+# ------------------------------------------------------------------------------
+# EXECUTION
+# ------------------------------------------------------------------------------
+
+current_balance = deposit_money(current_balance)
+
+current_balance = withdraw_money(current_balance)
+
+current_balance = transfer_money(current_balance)
+
+mini_statement(current_balance)
+
+# ------------------------------------------------------------------------------
+# LOCAL VARIABLE DEMONSTRATION
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("FUNCTION SCOPE DEMONSTRATION")
+print("=" * 80)
+
+def scope_demo():
+
+    local_message = "I exist only inside scope_demo()."
+
+    local_number = 500
+
+    print(local_message)
+    print(local_number)
+
+scope_demo()
+
+print("\nThe variables 'local_message' and 'local_number'")
+print("cannot be accessed outside scope_demo().")
+
+# ------------------------------------------------------------------------------
+# RETURN VALUE DEMONSTRATION
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("RETURN VALUE DEMONSTRATION")
+print("=" * 80)
+
+def calculate_interest(balance):
+
+    interest = balance * BANK_INTEREST_RATE / 100
+
+    maturity_amount = balance + interest
+
+    return interest, maturity_amount
+
+interest, maturity = calculate_interest(current_balance)
+
+print(f"Interest Earned : ₹{interest:,.2f}")
+print(f"Maturity Amount : ₹{maturity:,.2f}")
+
+# ------------------------------------------------------------------------------
+# SUMMARY
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("PART 2 SUMMARY")
+print("=" * 80)
+
+print(f"Customer Name      : {customer_name}")
+print(f"Final Balance      : ₹{current_balance:,.2f}")
+print(f"Interest Earned    : ₹{interest:,.2f}")
+print(f"Maturity Amount    : ₹{maturity:,.2f}")
+
+print("\nConcepts Learned")
+print("-" * 80)
+print("1. Function parameters have local scope.")
+print("2. Variables created inside a function are local.")
+print("3. Local variables are destroyed when the function ends.")
+print("4. return sends data back to the caller.")
+print("5. Different functions can use variables with the same name.")
+print("6. Global variables remain accessible unless shadowed.")
+
+print("\nPart 2 Completed Successfully.")
+
+# ===============================================================================
+# PART 3 : NESTED FUNCTIONS, NONLOCAL & LEGB RULE
+# ===============================================================================
+
+print("\n" + "=" * 80)
+print("BRANCH MANAGEMENT SYSTEM")
+print("=" * 80)
+
+# ------------------------------------------------------------------------------
+# GLOBAL VARIABLE
+# ------------------------------------------------------------------------------
+
+bank_region = "Western India"
+
+# ------------------------------------------------------------------------------
+# NESTED FUNCTION DEMONSTRATION
+# ------------------------------------------------------------------------------
+
+def branch_management():
+
+    branch_name = input("\nBranch Name : ").title()
+
+    branch_balance = float(
+        input("Branch Reserve Balance : ₹")
+    )
+
+    branch_transactions = 0
+
+    print("\nBranch Created Successfully.")
+
+    # --------------------------------------------------------------------------
+
+    def deposit():
+
+        nonlocal branch_balance
+        nonlocal branch_transactions
+
+        amount = float(
+            input("\nDeposit Amount : ₹")
+        )
+
+        branch_balance += amount
+        branch_transactions += 1
+
+        print("Deposit Successful")
+
+    # --------------------------------------------------------------------------
+
+    def withdraw():
+
+        nonlocal branch_balance
+        nonlocal branch_transactions
+
+        amount = float(
+            input("\nWithdrawal Amount : ₹")
+        )
+
+        if amount <= branch_balance:
+
+            branch_balance -= amount
+
+            branch_transactions += 1
+
+            print("Withdrawal Successful")
+
+        else:
+
+            print("Insufficient Branch Balance")
+
+    # --------------------------------------------------------------------------
+
+    def branch_report():
+
+        print("\n" + "-" * 80)
+        print("BRANCH REPORT")
+        print("-" * 80)
+
+        print(f"Region              : {bank_region}")
+        print(f"Branch              : {branch_name}")
+        print(f"Reserve Balance     : ₹{branch_balance:,.2f}")
+        print(f"Transactions        : {branch_transactions}")
+
+    deposit()
+    withdraw()
+    branch_report()
+
+branch_management()
+
+# ------------------------------------------------------------------------------
+# LEGB RULE DEMONSTRATION
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("LEGB RULE DEMONSTRATION")
+print("=" * 80)
+
+message = "Global Message"
+
+def outer():
+
+    message = "Enclosing Message"
+
+    def inner():
+
+        message = "Local Message"
+
+        print("\nInside Inner Function")
+        print(message)
+
+    inner()
+
+    print("\nInside Outer Function")
+    print(message)
+
+outer()
+
+print("\nOutside Function")
+print(message)
+
+# ------------------------------------------------------------------------------
+# BUILT-IN SCOPE
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("BUILT-IN SCOPE")
+print("=" * 80)
+
+numbers = [1200, 500, 750, 920, 300]
+
+print(f"Maximum Transaction : ₹{max(numbers):,.2f}")
+print(f"Minimum Transaction : ₹{min(numbers):,.2f}")
+print(f"Total Transactions  : ₹{sum(numbers):,.2f}")
+print(f"Number of Entries   : {len(numbers)}")
+
+# ------------------------------------------------------------------------------
+# VARIABLE LIFETIME
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("VARIABLE LIFETIME")
+print("=" * 80)
+
+def variable_lifetime():
+
+    temporary_token = "TXN-98421"
+
+    print("Transaction Token Created")
+    print(temporary_token)
+
+variable_lifetime()
+
+print("\nThe variable 'temporary_token'")
+print("no longer exists after the function execution finishes.")
+
+# ------------------------------------------------------------------------------
+# SCOPE COMPARISON
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("SCOPE COMPARISON")
+print("=" * 80)
+
+print(f"Global Variable      : {BANK_NAME}")
+print(f"Global Region        : {bank_region}")
+print(f"Current Customer     : {customer_name}")
+print(f"Current Balance      : ₹{current_balance:,.2f}")
+
+print("\nNested function variables such as")
+print("'branch_balance' and 'branch_transactions'")
+print("cannot be accessed outside branch_management().")
+
+# ------------------------------------------------------------------------------
+# SUMMARY
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("PART 3 SUMMARY")
+print("=" * 80)
+
+print("Concepts Covered")
+print("-" * 80)
+print("1. Nested Functions")
+print("2. nonlocal Keyword")
+print("3. LEGB Rule")
+print("4. Built-in Scope")
+print("5. Enclosing Scope")
+print("6. Local Scope")
+print("7. Global Scope")
+print("8. Variable Lifetime")
+print("9. Scope Resolution")
+print("10. Practical Scope Management")
+
+print("\nPart 3 Completed Successfully.")
+
+# ===============================================================================
+# PART 4 : ENTERPRISE SCOPE ANALYSIS & EXECUTIVE DASHBOARD
+# ===============================================================================
+
+print("\n" + "=" * 80)
+print("ENTERPRISE VARIABLE SCOPE DASHBOARD")
+print("=" * 80)
+
+# ------------------------------------------------------------------------------
+# GLOBAL VARIABLES REPORT
+# ------------------------------------------------------------------------------
+
+global_variables = {
+    "BANK_NAME": BANK_NAME,
+    "BANK_CODE": BANK_CODE,
+    "BANK_INTEREST_RATE": BANK_INTEREST_RATE,
+    "BANK_CURRENCY": BANK_CURRENCY,
+    "bank_region": bank_region,
+    "customer_name": customer_name,
+    "account_number": account_number,
+    "current_balance": current_balance,
+    "transaction_count": transaction_count
+}
+
+print("\nGLOBAL VARIABLES")
+print("-" * 80)
+
+for variable, value in global_variables.items():
+    print(f"{variable:<25}: {value}")
+
+# ------------------------------------------------------------------------------
+# MEMORY ANALYSIS
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("MEMORY ANALYSIS")
+print("=" * 80)
+
+print(f"id(BANK_NAME)             : {id(BANK_NAME)}")
+print(f"id(customer_name)         : {id(customer_name)}")
+print(f"id(current_balance)       : {id(current_balance)}")
+print(f"id(bank_region)           : {id(bank_region)}")
+print(f"id(BANK_INTEREST_RATE)    : {id(BANK_INTEREST_RATE)}")
+
+# ------------------------------------------------------------------------------
+# LEGB SUMMARY
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("LEGB RULE SUMMARY")
+print("=" * 80)
+
+legb = {
+    "L": "Local Scope",
+    "E": "Enclosing Scope",
+    "G": "Global Scope",
+    "B": "Built-in Scope"
+}
+
+for key, value in legb.items():
+    print(f"{key} --> {value}")
+
+# ------------------------------------------------------------------------------
+# BEST PRACTICES
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("BEST PRACTICES")
+print("=" * 80)
+
+best_practices = [
+    "Prefer local variables whenever possible.",
+    "Use global variables only when truly necessary.",
+    "Avoid modifying globals from many functions.",
+    "Use constants for fixed configuration values.",
+    "Keep variable names meaningful.",
+    "Use nonlocal only inside nested functions.",
+    "Limit the lifetime of temporary variables.",
+    "Return values instead of relying on globals.",
+    "Avoid variable shadowing unless intentional.",
+    "Write modular functions with clear scope."
+]
+
+for index, practice in enumerate(best_practices, start=1):
+    print(f"{index}. {practice}")
+
+# ------------------------------------------------------------------------------
+# COMMON MISTAKES
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("COMMON BEGINNER MISTAKES")
+print("=" * 80)
+
+mistakes = [
+    "Confusing == with =",
+    "Using global unnecessarily",
+    "Expecting local variables outside functions",
+    "Forgetting nonlocal in nested functions",
+    "Shadowing global variables accidentally",
+    "Using unclear variable names"
+]
+
+for index, mistake in enumerate(mistakes, start=1):
+    print(f"{index}. {mistake}")
+
+# ------------------------------------------------------------------------------
+# INTERVIEW QUESTIONS
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("INTERVIEW QUICK RECAP")
+print("=" * 80)
+
+qa = {
+    "What is Local Scope?":
+        "Variables created inside a function.",
+    "What is Global Scope?":
+        "Variables accessible throughout the module.",
+    "What does global do?":
+        "Allows modification of global variables.",
+    "What does nonlocal do?":
+        "Modifies variables in the enclosing function.",
+    "What is LEGB?":
+        "Local → Enclosing → Global → Built-in."
+}
+
+for question, answer in qa.items():
+    print(f"\nQ. {question}")
+    print(f"A. {answer}")
+
+# ------------------------------------------------------------------------------
+# FINAL BANK DASHBOARD
+# ------------------------------------------------------------------------------
+
+print("\n" + "=" * 80)
+print("FINAL ENTERPRISE BANK REPORT")
+print("=" * 80)
+
+print(f"Bank Name              : {BANK_NAME}")
+print(f"Bank Code              : {BANK_CODE}")
+print(f"Customer               : {customer_name}")
+print(f"Account Number         : {account_number}")
+print(f"Final Balance          : ₹{current_balance:,.2f}")
+print(f"Interest Rate          : {BANK_INTEREST_RATE}%")
+print(f"Region                 : {bank_region}")
+print(f"Transactions           : {transaction_count}")
+
+print("-" * 80)
+
+overall_status = "ACTIVE" if current_balance > 0 else "INACTIVE"
+
+print(f"Account Status         : {overall_status}")
+
+print("=" * 80)
+print("VARIABLE SCOPE PROJECT COMPLETED SUCCESSFULLY")
+print("=" * 80)
