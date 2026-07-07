@@ -111,14 +111,6 @@ After completing this lesson, you will be able to:
 
 ---
 
-# ⏭️ Next Lesson
-
-### **02 – Comparison Operators**
-
-In the next lesson, you'll learn how to compare values using comparison operators and use the results to make decisions in Python programs.
-
----
-
 <div align="center">
 
 ## 🎉 Lesson Complete!
