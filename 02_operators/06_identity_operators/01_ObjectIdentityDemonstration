@@ -1,0 +1,111 @@
+"""
+======================================================================
+🐍 Python Fundamentals
+
+Module 02 : Operators
+
+Demonstration : Object Identity Demonstration
+
+Description:
+This program demonstrates how Python identity operators
+compare whether two variables refer to the same object
+in memory.
+
+Concepts Covered:
+• is
+• is not
+
+Difficulty Level : Beginner
+Python Version   : 3.x
+
+Author : Krishna Panchal
+======================================================================
+"""
+
+# =====================================================================
+# OBJECT IDENTITY DEMONSTRATION
+# =====================================================================
+
+print("=" * 70)
+print("             OBJECT IDENTITY DEMONSTRATION")
+print("=" * 70)
+
+print("""
+Identity operators compare whether two variables refer
+to the same object in memory.
+
+They do not compare values.
+""")
+
+# =====================================================================
+# OBJECT CREATION
+# =====================================================================
+
+print("\n" + "=" * 70)
+print("                 OBJECT CREATION")
+print("=" * 70)
+
+employee_a = ["Krishna", "Python"]
+
+employee_b = employee_a
+
+employee_c = ["krishna", "Python"]
+
+# =====================================================================
+# IDENTITY CHECK
+# =====================================================================
+
+same_object = employee_a is employee_b
+
+different_object = employee_a is not employee_c
+
+same_value = employee_a == employee_c
+
+# =====================================================================
+# DEMONSTRATION REPORT
+# =====================================================================
+
+print("\n" + "=" * 70)
+print("              OBJECT IDENTITY REPORT")
+print("=" * 70)
+
+print(f"""
+Employee A              : {employee_a}
+
+Employee B              : {employee_b}
+
+Employee C              : {employee_c}
+
+Employee A is Employee B        : {same_object}
+
+Employee A is not Employee C    : {different_object}
+
+Employee A == Employee C        : {same_value}
+""")
+
+# =====================================================================
+# SUMMARY
+# =====================================================================
+
+print("\n" + "=" * 70)
+print("                     SUMMARY")
+print("=" * 70)
+
+print("""
+Identity Operators Used
+
+✓ is
+Checks whether two variables refer to the same object.
+
+✓ is not
+Checks whether two variables refer to different objects.
+
+Note:
+
+'is' compares object identity.
+
+'==' compares values.
+
+Both may produce different results depending on
+the objects being compared.
+""")
