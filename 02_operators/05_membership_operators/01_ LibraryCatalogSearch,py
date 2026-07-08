@@ -1,0 +1,126 @@
+"""
+======================================================================
+🐍 Python Fundamentals
+
+Module 02 : Operators
+
+Application : Library Catalog Search
+
+Description:
+This program demonstrates the practical use of Python
+membership operators by searching for books in a library
+catalog.
+
+Concepts Covered:
+• in
+• not in
+
+Difficulty Level : Beginner
+Python Version   : 3.x
+
+Author : Krishna Panchal
+======================================================================
+"""
+
+# =====================================================================
+# LIBRARY CATALOG SEARCH
+# =====================================================================
+
+print("=" * 70)
+print("                 LIBRARY CATALOG SEARCH")
+print("=" * 70)
+
+print("""
+Welcome!
+
+This application demonstrates how Python membership
+operators are used to search for books in a library
+catalog.
+
+A predefined catalog of books is available for searching.
+""")
+
+# =====================================================================
+# USER DETAILS
+# =====================================================================
+
+print("\n" + "=" * 70)
+print("                    USER DETAILS")
+print("=" * 70)
+
+name = input("Reader Name : ")
+library_id = input("Library ID  : ")
+
+# =====================================================================
+# LIBRARY CATALOG
+# =====================================================================
+
+library_catalog = [
+    "Atomic Habits",
+    "Deep Work",
+    "The Psychology of Money",
+    "Rich Dad Poor Dad",
+    "Think and Grow Rich",
+    "The Alchemist",
+    "Ikigai",
+    "The Intelligent Investor",
+    "Zero to One",
+    "Python Crash Course"
+]
+
+print("\n" + "=" * 70)
+print("                  LIBRARY CATALOG")
+print("=" * 70)
+
+print("""
+Available Books
+
+• Atomic Habits
+• Deep Work
+• The Psychology of Money
+• Rich Dad Poor Dad
+• Think and Grow Rich
+• The Alchemist
+• Ikigai
+• The Intelligent Investor
+• Zero to One
+• Python Crash Course
+""")
+
+# =====================================================================
+# BOOK SEARCH
+# =====================================================================
+
+print("\n" + "=" * 70)
+print("                    BOOK SEARCH")
+print("=" * 70)
+
+searched_book = input("Enter Book Name : ")
+
+# =====================================================================
+# MEMBERSHIP OPERATOR ANALYSIS
+# =====================================================================
+
+book_available = searched_book in library_catalog
+
+book_not_available = searched_book not in library_catalog
+
+# =====================================================================
+# SEARCH REPORT
+# =====================================================================
+
+print("\n" + "=" * 70)
+print("                  SEARCH REPORT")
+print("=" * 70)
+
+print(f"""
+Reader Name             : {name}
+
+Library ID              : {library_id}
+
+Book Searched           : {searched_book}
+
+Book Available          : {book_available}
+
+Book Not Available      : {book_not_available}
+""")
