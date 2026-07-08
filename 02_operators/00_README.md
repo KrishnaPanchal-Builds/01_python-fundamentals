@@ -86,7 +86,7 @@ After completing this module, you will be able to:
 | File | Project |
 |------|---------|
 | 01 | Smart Salary & Financial Calculator |
-| 02 | Student Performance Eligibility Checker |
+| 02 | Smartphone Comparison Dashboard |
 | 03 | Secure Login Decision System |
 | 04 | Inventory Stock Manager |
 | 05 | Digital Library Book Search |
