@@ -45,20 +45,25 @@ This lesson includes:
 
 ---
 
-# 🌍 Real-World Applications
+# 💼 Real-World Application
 
-Membership operators are widely used in:
+## Tech Skills Analyzer
 
-- 🔍 Search Systems
-- 🛒 E-Commerce Applications
-- 🎓 Student Management Systems
-- 📚 Library Management Systems
-- 🏦 Banking Software
-- 🔐 Login Authentication
-- 📦 Inventory Management
-- 📧 Email Validation
-- 🌐 Web Applications
-- 📱 Mobile Applications
+In this application, you'll learn how Python membership
+operators are used to search for technical skills within
+a predefined skill database.
+
+The application demonstrates how to:
+
+- Check whether a technical skill exists.
+- Check whether a technical skill does not exist.
+- Search for values inside a collection.
+- Display Boolean results using membership operators.
+- Understand how membership operators are used in skill analysis systems.
+
+This project provides a practical understanding of how
+Python searches for values in collections using the
+`in` and `not in` operators.
 
 ---
 
